@@ -72,10 +72,8 @@ class TableCell: UITableViewCell {
             if goVertical {
                 let transfer = recognizer.translation(in: tableview)
                 var y = ((tableview as? UIScrollView)?.contentOffset.y ?? nowPoint.y) - transfer.y/5
-                print("y=\(y), trans=\(transfer.y/5)")
                 if y < 0 { y = 0 }
                 else if y > heightMAX { y = heightMAX }
-                print("setY=\(y)")
                 (tableview as? UIScrollView)?.contentOffset.y = y
                 nowPoint = (tableview as? UIScrollView)?.contentOffset ?? .zero
             } else {

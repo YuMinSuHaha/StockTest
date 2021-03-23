@@ -39,7 +39,6 @@ class StockSelection: UIViewController, SettingDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as? SettingViewController)?.delegate = self
-        print("from:\(segue.source), to:\(segue.destination)")
     }
     
     func popoverDismissed() {
@@ -56,7 +55,6 @@ class StockSelection: UIViewController, SettingDelegate {
                 }
             }
             DispatchQueue.main.async {
-                FakeAPI.shared.selectedCode = []
                 self.dataSource = FakeAPI.shared.allStock
                 self.stockInfo = FakeAPI.shared.stockInfo
                 self.tableView.reloadData()

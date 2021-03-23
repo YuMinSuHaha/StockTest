@@ -135,7 +135,6 @@ class FakeAPI {
         sessionConfig.timeoutIntervalForResource = 20.0
         let session = URLSession(configuration: sessionConfig)
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            print(response.debugDescription)
             if let data = data, let json = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, AnyObject>, let array = json["data1"] as? [[String]], array.count > 0 {
                 self.parseData(dataArray: array)
                 completion(true)

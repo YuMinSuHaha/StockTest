@@ -56,6 +56,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        setUpdateTimeAction()
         delegate?.popoverDismissed()
     }
     
@@ -64,6 +65,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         alert.popoverPresentationController?.sourceView = sender
         for item in stockCategory {
             let action = UIAlertAction(title: item[1], style: .default) { (_) in
+                FakeAPI.shared.selectedCode = []
                 self.database.setValue(item[0], forKey: "search_stock")
                 sender.setTitle(item[1], for: .normal)
             }
